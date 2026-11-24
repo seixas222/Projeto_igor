@@ -1,0 +1,145 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Meus exercícios{% endblock %}
+
+{% block content %}
+
+<div class="management-container">
+
+    <!-- Cabeçalho da página -->
+    <div class="management-header">
+        <div>
+            <span class="management-label">ORGANIZAÇÃO</span>
+            <h2>Meus exercícios</h2>
+            <p>Cadastre e organize os exercícios dos seus treinos.</p>
+        </div>
+
+        <a href="{{ url_for('auth.home') }}" class="back-button">
+            ← Voltar ao início
+        </a>
+    </div>
+
+    <!-- Formulário para cadastrar exercícios -->
+    <div class="management-form">
+
+        <h3>Novo exercício</h3>
+        <p>Preencha as informações do exercício.</p>
+
+        <form method="POST" action="{{ url_for('exercicio.listar') }}">
+
+            <label>Nome do exercício</label>
+            <input
+                type="text"
+                name="nome"
+                placeholder="Ex: Agachamento"
+                required
+            >
+
+            <label>Grupo muscular</label>
+            <input
+                type="text"
+                name="grupo_muscular"
+                placeholder="Ex: Perna"
+                required
+            >
+
+            <label>Séries</label>
+            <input
+                type="number"
+                name="series"
+                min="1"
+                placeholder="Ex: 4"
+                required
+            >
+
+            <label>Repetições</label>
+            <input
+                type="number"
+                name="repeticoes"
+                min="1"
+                placeholder="Ex: 12"
+                required
+            >
+
+            <!-- Seleciona o treino ao qual o exercício pertence -->
+            <label>Treino</label>
+            <select name="treino_id" required>
+
+                <option value="">Selecione um treino</option>
+
+                {% for treino in treinos %}
+                    <option value="{{ treino.id }}">
+                        {{ treino.nome }}
+                    </option>
+                {% endfor %}
+
+            </select>
+
+            <button type="submit">Cadastrar exercício</button>
+
+        </form>
+    </div>
+
+    <!-- Lista de exercícios cadastrados -->
+    <div class="management-list">
+
+        <h3>Exercícios cadastrados</h3>
+
+        {% if exercicios %}
+
+            <div class="item-grid">
+
+                {% for exercicio in exercicios %}
+
+                    <div class="item-card">
+
+                        <span class="item-number">EXERCÍCIO</span>
+
+                        <h4>{{ exercicio.nome }}</h4>
+
+                        <p>
+                            <strong>Grupo muscular:</strong>
+                            {{ exercicio.grupo_muscular }}
+                        </p>
+
+                        <p>
+                            <strong>Séries:</strong>
+                            {{ exercicio.series }}
+                        </p>
+
+                        <p>
+                            <strong>Repetições:</strong>
+                            {{ exercicio.repeticoes }}
+                        </p>
+
+                        <!-- Exclui o exercício -->
+                        <form
+                            method="POST"
+                            action="{{ url_for('exercicio.excluir', exercicio_id=exercicio.id) }}"
+                        >
+                            <button type="submit" class="delete-button">
+                                Excluir exercício
+                            </button>
+                        </form>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-state">
+                <h4>Nenhum exercício cadastrado</h4>
+                <p>Comece adicionando seu primeiro exercício.</p>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

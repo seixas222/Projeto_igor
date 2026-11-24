@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem de Usuários</title>
+</head>
+<body>
+
+    <h1>Usuários cadastrados</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome de usuário</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario["id"] }}</td>
+                <td>{{ usuario["username"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+
+    <a href="{{ url_for('auth.home') }}">Voltar</a>
+
+</body>
+</html>

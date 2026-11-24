@@ -1,0 +1,75 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Página inicial{% endblock %}
+
+{% block content %}
+
+<!-- Painel principal da página inicial -->
+<div class="home-container">
+
+    <!-- Cabeçalho de boas-vindas -->
+    <div class="home-header">
+        <div>
+            <span class="home-label">PAINEL PRINCIPAL</span>
+
+            <h2>Olá, {{ usuario }}!</h2>
+
+            <p>Bem-vindo ao seu espaço de treinamento.</p>
+        </div>
+
+        <!-- Botão para sair da conta -->
+        <a class="logout-button" href="{{ url_for('auth.logout') }}">
+            Sair da conta
+        </a>
+    </div>
+
+    <!-- Apresentação das funcionalidades -->
+    <div class="home-intro">
+        <h3>O que deseja fazer hoje?</h3>
+        <p>Gerencie seus treinos e organize seus exercícios.</p>
+    </div>
+
+    <!-- Cards de funcionalidades -->
+    <div class="home-cards">
+
+        <!-- Card de treinos -->
+        <div class="home-card">
+            <div class="card-icon">01</div>
+
+            <h3>Meus Treinos</h3>
+
+            <p>
+                Cadastre, visualize e organize seus treinos.
+            </p>
+
+            <a href="{{ url_for('treino.listar') }}" class="card-button">
+                Acessar treinos →
+            </a>
+        </div>
+
+        <!-- Card de exercícios -->
+        <div class="home-card">
+            <div class="card-icon">02</div>
+
+            <h3>Meus Exercícios</h3>
+
+            <p>
+                Cadastre exercícios e organize suas séries e repetições.
+            </p>
+
+            <a href="{{ url_for('exercicio.listar') }}" class="card-button">
+                Acessar exercícios →
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Rodapé do painel -->
+    <div class="home-footer">
+        <p>FITNESS SYSTEM | Organização e evolução.</p>
+    </div>
+
+</div>
+
+{% endblock %}

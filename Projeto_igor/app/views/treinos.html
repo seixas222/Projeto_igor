@@ -1,0 +1,99 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Meus treinos{% endblock %}
+
+{% block content %}
+
+<div class="management-container">
+
+    <!-- Cabeçalho da página -->
+    <div class="management-header">
+        <div>
+            <span class="management-label">ORGANIZAÇÃO</span>
+            <h2>Meus treinos</h2>
+            <p>Organize sua rotina e acompanhe seus treinamentos.</p>
+        </div>
+
+        <a href="{{ url_for('auth.home') }}" class="back-button">
+            ← Voltar ao início
+        </a>
+    </div>
+
+    <!-- Formulário de cadastro -->
+    <div class="management-form">
+
+        <h3>Novo treino</h3>
+        <p>Adicione um treino à sua rotina.</p>
+
+        <form method="POST" action="{{ url_for('treino.listar') }}">
+
+            <label>Nome do treino</label>
+            <input
+                type="text"
+                name="nome"
+                placeholder="Ex: Treino A - Inferiores"
+                required
+            >
+
+            <label>Descrição</label>
+            <textarea
+                name="descricao"
+                placeholder="Descreva seu treino..."
+                rows="4"
+            ></textarea>
+
+            <button type="submit">Cadastrar treino</button>
+
+        </form>
+    </div>
+
+    <!-- Listagem dos treinos -->
+    <div class="management-list">
+
+        <h3>Treinos cadastrados</h3>
+
+        {% if treinos %}
+
+            <div class="item-grid">
+
+                {% for treino in treinos %}
+
+                    <div class="item-card">
+
+                        <span class="item-number">TREINO</span>
+
+                        <h4>{{ treino.nome }}</h4>
+
+                        <p>{{ treino.descricao or 'Sem descrição cadastrada.' }}</p>
+
+                        <!-- Exclusão do treino -->
+                        <form
+                            method="POST"
+                            action="{{ url_for('treino.excluir', treino_id=treino.id) }}"
+                        >
+                            <button type="submit" class="delete-button">
+                                Excluir treino
+                            </button>
+                        </form>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-state">
+                <h4>Nenhum treino cadastrado</h4>
+                <p>Comece adicionando seu primeiro treino.</p>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

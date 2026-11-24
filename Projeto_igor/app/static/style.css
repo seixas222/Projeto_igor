@@ -1,0 +1,561 @@
+
+/* Configurações gerais */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #F8F7F7;
+    color: #292329;
+}
+
+/* Tela de login dividida em duas partes */
+.login-page {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Lateral esquerda: formulário */
+.login-left {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: #FFFFFF;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 390px;
+}
+
+.login-card h1 {
+    color: #70263E;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.login-subtitle {
+    color: #888087;
+    margin-bottom: 35px;
+}
+
+/* Campos do formulário */
+.login-card label {
+    display: block;
+    margin-bottom: 8px;
+    color: #493740;
+    font-weight: bold;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 22px;
+    border: 1px solid #DDD4D8;
+    border-radius: 7px;
+    background: #FBF9FA;
+    color: #292329;
+    font-size: 14px;
+}
+
+.login-card input:focus {
+    outline: none;
+    border-color: #70263E;
+}
+
+/* Botão de entrar */
+.login-card button {
+    width: 100%;
+    padding: 15px;
+    background: #70263E;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-card button:hover {
+    background: #511B2E;
+}
+
+/* Link de cadastro */
+.register-text {
+    text-align: center;
+    margin-top: 25px;
+    color: #777078;
+}
+
+.register-text a {
+    color: #70263E;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Lateral direita: apresentação */
+.login-right {
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    background: #70263E;
+    color: #FFFFFF;
+}
+
+.presentation {
+    max-width: 500px;
+}
+
+.brand-label {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #E7C5D0;
+}
+
+.presentation h2 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin: 25px 0;
+    color: #FFFFFF;
+}
+
+.presentation p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #F2E5E9;
+}
+
+/* Adaptação para celulares */
+@media (max-width: 750px) {
+    .login-page {
+        flex-direction: column;
+    }
+
+    .login-left,
+    .login-right {
+        width: 100%;
+    }
+
+    .login-left {
+        min-height: 65vh;
+    }
+
+    .login-right {
+        min-height: 35vh;
+        padding: 35px;
+    }
+
+    .presentation h2 {
+        font-size: 32px;
+    }
+}
+
+/* Mensagens de aviso e erro do sistema */
+.flash-message {
+    padding: 14px 18px;
+    margin: 18px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Mensagem de erro */
+.flash-danger {
+    background-color: #F8E9ED;
+    color: #70263E;
+    border: 1px solid #D9AAB7;
+}
+
+/* Mensagem de sucesso */
+.flash-success {
+    background-color: #EAF3EC;
+    color: #28613A;
+    border: 1px solid #B8D6BF;
+}
+
+/* Mensagem informativa */
+.flash-info {
+    background-color: #F0EDF5;
+    color: #59436D;
+    border: 1px solid #D2C6DF;
+}
+
+/* Mensagens do sistema */
+.mensagem {
+    padding: 13px;
+    margin: 15px 0;
+    border-radius: 7px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Mensagem de erro */
+.mensagem.danger {
+    background-color: #F8E8ED;
+    color: #70263E;
+    border: 1px solid #DDB5C0;
+}
+
+/* Mensagem de sucesso */
+.mensagem.success {
+    background-color: #EAF3EC;
+    color: #28613A;
+    border: 1px solid #B8D6BF;
+}
+
+/* Mensagem informativa */
+.mensagem.info {
+    background-color: #F1EAF0;
+    color: #70263E;
+    border: 1px solid #D8C3CE;
+}
+
+/* ===== PÁGINA INICIAL ===== */
+
+.home-container {
+    max-width: 1100px;
+    width: 90%;
+    margin: 55px auto;
+}
+
+/* Cabeçalho */
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #E9DFE2;
+}
+
+.home-label {
+    color: #70263E;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.home-header h2 {
+    color: #70263E;
+    font-size: 34px;
+    margin: 12px 0;
+}
+
+.home-header p,
+.home-intro p {
+    color: #81777C;
+}
+
+/* Botão sair */
+.logout-button {
+    color: #70263E;
+    border: 1px solid #70263E;
+    padding: 11px 20px;
+    border-radius: 7px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.logout-button:hover {
+    background: #70263E;
+    color: white;
+}
+
+/* Introdução */
+.home-intro {
+    margin: 40px 0 25px;
+}
+
+.home-intro h3 {
+    color: #33272D;
+    font-size: 23px;
+}
+
+/* Cards */
+.home-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.home-card {
+    background: #FFFFFF;
+    border: 1px solid #E9DFE2;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 5px 18px rgba(80, 35, 50, 0.06);
+    transition: 0.3s;
+}
+
+.home-card:hover {
+    transform: translateY(-5px);
+    border-color: #70263E;
+}
+
+.card-icon {
+    background: #F5E9ED;
+    color: #70263E;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.home-card h3 {
+    color: #70263E;
+    font-size: 22px;
+    margin-top: 22px;
+}
+
+.home-card p {
+    color: #81777C;
+    line-height: 1.6;
+    min-height: 50px;
+}
+
+/* Botões dos cards */
+.card-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 18px;
+    background: #70263E;
+    color: white;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.card-button:hover {
+    background: #511B2E;
+    color: white;
+}
+
+/* Rodapé */
+.home-footer {
+    margin-top: 55px;
+    padding-top: 20px;
+    border-top: 1px solid #E9DFE2;
+    color: #A0969B;
+    font-size: 12px;
+}
+
+/* Adaptação para celular */
+@media (max-width: 700px) {
+    .home-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .home-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .home-header h2 {
+        font-size: 28px;
+    }
+}
+
+/* ===== PÁGINAS DE TREINOS E EXERCÍCIOS ===== */
+
+.management-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto;
+}
+
+/* Cabeçalho */
+.management-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #E9DFE2;
+}
+
+.management-label {
+    color: #70263E;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.management-header h2 {
+    color: #70263E;
+    font-size: 32px;
+    margin: 12px 0;
+}
+
+.management-header p,
+.management-form > p {
+    color: #81777C;
+}
+
+/* Voltar */
+.back-button {
+    color: #70263E;
+    border: 1px solid #70263E;
+    padding: 11px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Formulário */
+.management-form {
+    background: #FFFFFF;
+    border: 1px solid #E9DFE2;
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: 0 5px 18px rgba(80, 35, 50, 0.05);
+}
+
+.management-form h3,
+.management-list > h3 {
+    color: #70263E;
+    font-size: 22px;
+    margin-top: 0;
+}
+
+.management-form label {
+    display: block;
+    color: #493740;
+    font-weight: bold;
+    margin: 18px 0 8px;
+}
+
+.management-form input,
+.management-form textarea,
+.management-form select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #DDD4D8;
+    border-radius: 7px;
+    background: #FBF9FA;
+    color: #292329;
+    font-family: Arial, sans-serif;
+}
+
+.management-form input:focus,
+.management-form textarea:focus,
+.management-form select:focus {
+    outline: none;
+    border-color: #70263E;
+}
+
+.management-form button {
+    margin-top: 18px;
+    background: #70263E;
+    color: white;
+    padding: 13px 22px;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.management-form button:hover {
+    background: #511B2E;
+}
+
+/* Listagem */
+.management-list {
+    margin-top: 40px;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.item-card {
+    background: #FFFFFF;
+    border: 1px solid #E9DFE2;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 18px rgba(80, 35, 50, 0.05);
+    transition: 0.3s;
+}
+
+.item-card:hover {
+    border-color: #70263E;
+    transform: translateY(-3px);
+}
+
+.item-number {
+    color: #8B5265;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.item-card h4 {
+    color: #70263E;
+    font-size: 20px;
+}
+
+.item-card p {
+    color: #81777C;
+    line-height: 1.6;
+}
+
+/* Botão excluir */
+.delete-button {
+    background: #F8E9ED;
+    color: #70263E;
+    border: 1px solid #E5C4CE;
+    padding: 10px 16px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.delete-button:hover {
+    background: #70263E;
+    color: #FFFFFF;
+}
+
+/* Estado vazio */
+.empty-state {
+    padding: 35px;
+    text-align: center;
+    background: #FFFFFF;
+    border: 1px dashed #D9C5CC;
+    border-radius: 12px;
+    color: #81777C;
+}
+
+.empty-state h4 {
+    color: #70263E;
+}
+
+/* Responsividade */
+@media (max-width: 700px) {
+    .management-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .item-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .management-form {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,77 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<!-- Evita mostrar as mensagens fora do formulário -->
+{% block mensagens %}{% endblock %}
+
+<div class="login-page">
+
+    <!-- Lado esquerdo: formulário de login -->
+    <div class="login-left">
+        <div class="login-card">
+            <!-- Exibe mensagens de erro ou sucesso dentro do login -->
+    {% with mensagens = get_flashed_messages(with_categories=true) %}
+        {% for categoria, mensagem in mensagens %}
+            <p class="mensagem {{ categoria }}">{{ mensagem }}</p>
+        {% endfor %}
+    {% endwith %}
+
+            <h1>Bem-vindo!</h1>
+            <p class="login-subtitle">Entre na sua conta para continuar.</p>
+
+            <form method="POST">
+
+                <label>Usuário</label>
+
+                <!-- Recupera o último usuário salvo no cookie -->
+                <input
+                    type="text"
+                    name="username"
+                    value="{{ usuario_salvo or '' }}"
+                    placeholder="Digite seu usuário"
+                    required
+                >
+
+                <label>Senha</label>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Digite sua senha"
+                    required
+                >
+
+                <button type="submit">ENTRAR</button>
+
+            </form>
+
+            <p class="register-text">
+                Não tem uma conta?
+                <a href="{{ url_for('auth.cadastro') }}">Cadastre-se</a>
+            </p>
+
+        </div>
+    </div>
+
+    <!-- Lado direito: apresentação do sistema -->
+    <div class="login-right">
+        <div class="presentation">
+
+            <span class="brand-label">FITNESS SYSTEM</span>
+
+            <h2>SUA EVOLUÇÃO<br>COMEÇA AQUI.</h2>
+
+            <p>
+                Organize seus treinos, acompanhe seus exercícios
+                e mantenha o foco nos seus objetivos.
+            </p>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
